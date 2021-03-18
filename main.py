@@ -10,6 +10,7 @@ urlpatterns = {
 def my_controller(request):
     # пример Front Controller
     request['my_key'] = 'Hello World!'
+    request['my_title'] = 'My framework'
 
 
 front_controllers = [
