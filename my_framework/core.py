@@ -47,8 +47,17 @@ class Application:
         """
         # текущий url
         path = environ['PATH_INFO']
-        print(f'environiron: {environ}')
-        print(f'PATH: {path}')
+        print(f'*** *** *** my print *** *** ***'
+              f'\nenvironiron: {environ}')
+        print(f'PATH: {path}\n'
+              f'*** *** *** my print *** *** ***')
+
+        # Если вконце нет слеша, то добавляем его
+        if path[-1] != '/':
+            path = f'{path}/'
+        # # добавление закрывающего слеша  # пример препода
+        # if not path.endswith('/'):
+        #     path = f'{path}/'
 
         # Получаем все данные запроса
         method = environ['REQUEST_METHOD']
@@ -57,10 +66,6 @@ class Application:
 
         query_string = environ['QUERY_STRING']
         request_params = self.parse_input_data(query_string)
-
-        # Если вконце нет слеша, то добавляем его
-        if path[-1] != '/':
-            path = f'{path}/'
 
         if path in self.urlpatterns:
             # получаем view по url

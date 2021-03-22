@@ -4,7 +4,12 @@ import views
 urlpatterns = {
     '/': views.main_view,
     '/about/': views.about_view,
-    '/contact/': views.contact_view
+    '/contact/': views.contact_view,
+
+    '/category-list/': views.category_list_view,
+    '/course-list/': views.course_list_view,
+    '/create-category/': views.create_category_view,
+    '/create-course/': views.create_course_view
 }
 
 

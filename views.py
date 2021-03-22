@@ -36,3 +36,19 @@ def contact_view(request):
         return '200 OK', render('contact.html')
     else:
         return '200 OK', render('contact.html')
+
+
+def category_list_view(request):
+    return '200 OK', render('category_list.html')
+
+
+def course_list_view(request):
+    return '200 OK', render('course_list.html')
+
+
+def create_category_view(request):
+    return '200 OK', render('create_category.html')
+
+
+def create_course_view(request):
+    return '200 OK', render('create_course.html')
