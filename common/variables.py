@@ -13,6 +13,6 @@ ENCODING = 'utf-8'
 # Текущий уровень логирования
 LOGGING_LEVEL = DEBUG
 # Текущий уровень логирования для потокового вывода
-LOGGING_LEVEL_FOR_STREAM_HANDLER = ERROR
+# LOGGING_LEVEL_FOR_STREAM_HANDLER = ERROR
 # на время отладки потоковый вывод иногда так же ставлю в DEBUG
-# LOGGING_LEVEL_FOR_STREAM_HANDLER = DEBUG
+LOGGING_LEVEL_FOR_STREAM_HANDLER = DEBUG

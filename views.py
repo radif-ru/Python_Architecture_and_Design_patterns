@@ -1,15 +1,13 @@
 from logging_mod import Logger
 from models import TrainingSite
 from my_framework import render, Application
-# Инициализация логирования сервера.
-from logs.configs.config_server_log import LOGGER
 
 # Создание копирование курса, список курсов
 # Регистрация пользователя, список пользователей
 # Логирование
 
 site = TrainingSite()
-logger = Logger('main')
+LOGGER = Logger('main')
 
 
 def main_view(request):
@@ -20,8 +18,7 @@ def main_view(request):
 
 
 def course_list_view(request):
-    logger.log('Список курсов')
-    print(f'Список курсов - {site.courses}')
+    LOGGER.debug(f'Список курсов - {site.courses}')
     return '200 OK', render('course_list.html', objects_list=site.courses)
 
 
@@ -88,7 +85,7 @@ def copy_course(request):
 
 
 def category_list_view(request):
-    logger.log('Список категорий')
+    LOGGER.debug('Список категорий')
     return '200 OK', render('category_list.html', objects_list=site.categories)
 
 
@@ -110,11 +107,6 @@ def contact_view(request):
             f'тема - {Application.decode_value(title)}, текст - '
             f' {Application.decode_value(text)}.'
         )
-        print(
-            f'Нам пришло сообщение! Отправитель - '
-            f'{Application.decode_value(email)}, '
-            f'тема - {Application.decode_value(title)}, текст - '
-            f' {Application.decode_value(text)}.')
         return '200 OK', render('contact.html')
     else:
         return '200 OK', render('contact.html')

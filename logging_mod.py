@@ -1,5 +1,8 @@
-from reusepatterns.singletones import SingletonByName
 import time
+
+from reusepatterns.singletones import SingletonByName
+# Инициализация логирования сервера.
+from logs.configs.config_server_log import LOGGER
 
 
 # Заметка, можно применить стратегию если добавить стратегию логирования
@@ -8,5 +11,5 @@ class Logger(metaclass=SingletonByName):
     def __init__(self, name):
         self.name = name
 
-    def log(self, text):
-        print('log--->', text)
+    def debug(self, text):
+        return LOGGER.debug(text)
