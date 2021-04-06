@@ -1,0 +1,5 @@
+2021-03-26 15:27:23,760 DEBUG logging_mod.py Список курсов
+2021-03-26 15:30:25,385 DEBUG logging_mod.py Список курсов - {site.courses}
+2021-03-26 15:30:55,114 DEBUG logging_mod.py Список категорий
+2021-03-26 15:31:57,908 DEBUG logging_mod.py Список курсов - {site.courses}
+2021-03-26 15:32:53,106 DEBUG logging_mod.py Список курсов - []

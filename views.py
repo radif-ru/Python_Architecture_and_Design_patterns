@@ -1,4 +1,4 @@
-from logging_mod import Logger
+from logging_mod import Logger, debug
 from models import TrainingSite
 from my_framework import render, Application
 
@@ -8,6 +8,10 @@ from my_framework import render, Application
 
 site = TrainingSite()
 LOGGER = Logger('main')
+
+
+def application(app):
+    return app
 
 
 def main_view(request):
@@ -22,11 +26,13 @@ def course_list_view(request):
     return '200 OK', render('course_list.html', objects_list=site.courses)
 
 
+@debug
 def create_course_view(request):
     if request['method'] == 'POST':
         # метод пост
         data = request['data']
         name = data['name']
+        name = Application.decode_value(name)
         category_id = data.get('category_id')
         # print(category_id)
         category = None
@@ -87,26 +93,3 @@ def copy_course(request):
 def category_list_view(request):
     LOGGER.debug('Список категорий')
     return '200 OK', render('category_list.html', objects_list=site.categories)
-
-
-def about_view(request):
-    # Просто возвращаем текст
-    return '200 OK', "About"
-
-
-def contact_view(request):
-    # Проверка метода запроса
-    if request['method'] == 'POST':
-        data = request['data']
-        title = data['title']
-        text = data['text']
-        email = data['email']
-        LOGGER.debug(
-            f'Нам пришло сообщение! Отправитель - '
-            f'{Application.decode_value(email)}, '
-            f'тема - {Application.decode_value(title)}, текст - '
-            f' {Application.decode_value(text)}.'
-        )
-        return '200 OK', render('contact.html')
-    else:
-        return '200 OK', render('contact.html')

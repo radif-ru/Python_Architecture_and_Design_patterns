@@ -1,16 +1,27 @@
 import quopri
+from wsgiref.util import setup_testing_defaults
 
 
 class Application:
 
     def decode_value(val):
+        """
+        Перевод кириллических данных в читаемый вид
+        :return:
+        """
         val_b = bytes(val.replace('%', '=').replace("+", " "), 'UTF-8')
         val_decode_str = quopri.decodestring(val_b)
         return val_decode_str.decode('UTF-8')
 
     def add_route(self, url):
-        # паттерн декоратор
+        """
+        Паттерн декоратор
+        :param url: добавляется в urlpatterns
+        """
         def inner(view):
+            """
+            :param view: оборачиваемая функция
+            """
             self.urlpatterns[url] = view
 
         return inner
@@ -49,15 +60,16 @@ class Application:
 
     def __call__(self, environ, start_response):
         """
-           :param environiron: словарь данных от сервера
+           :param environ: словарь данных от сервера
            :param start_response: функция для ответа серверу
         """
+        setup_testing_defaults(environ)
         # текущий url
         path = environ['PATH_INFO']
-        print(f'*** *** *** my print *** *** ***'
-              f'\nenvironiron: {environ}')
-        print(f'PATH: {path}\n'
-              f'*** *** *** my print *** *** ***')
+        # print(f'*** *** *** my print *** *** ***'
+        #       f'\nenvironiron: {environ}')
+        # print(f'PATH: {path}\n'
+        #       f'*** *** *** my print *** *** ***')
 
         # Если вконце нет слеша, то добавляем его
         if path[-1] != '/':
@@ -95,3 +107,33 @@ class Application:
             # Если url нет в urlpatterns - то страница не найдена
             start_response('404 NOT FOUND', [('Content-Type', 'text/html')])
             return [b"Not Found"]
+
+
+# Новый вид WSGI-application.
+# Первый — логирующий (такой же, как основной,
+# только для каждого запроса выводит информацию
+# (тип запроса и параметры) в консоль.
+class DebugApplication(Application):
+
+    def __init__(self, urlpatterns, front_controllers):
+        self.application = Application(urlpatterns, front_controllers)
+        super().__init__(urlpatterns, front_controllers)
+
+    def __call__(self, env, start_response):
+        print('DEBUG MODE')
+        print(env)
+        return self.application(env, start_response)
+
+
+# Новый вид WSGI-application.
+# Второй — фейковый (на все запросы пользователя отвечает:
+# 200 OK, Hello from Fake).
+class FakeApplication(Application):
+
+    def __init__(self, urlpatterns, front_controllers):
+        self.application = Application(urlpatterns, front_controllers)
+        super().__init__(urlpatterns, front_controllers)
+
+    def __call__(self, env, start_response):
+        start_response('200 OK', [('Content-Type', 'text/html')])
+        return [b'Hello from Fake']

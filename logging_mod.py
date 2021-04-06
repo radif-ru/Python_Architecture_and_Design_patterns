@@ -13,3 +13,15 @@ class Logger(metaclass=SingletonByName):
 
     def debug(self, text):
         return LOGGER.debug(text)
+
+
+# декоратор
+def debug(func):
+    def inner(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print('DEBUG-------->', func.__name__, end - start)
+        return result
+
+    return inner

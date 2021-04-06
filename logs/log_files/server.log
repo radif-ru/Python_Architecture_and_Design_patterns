@@ -1,5 +1,12 @@
-2021-03-26 15:27:23,760 DEBUG logging_mod.py Список курсов
-2021-03-26 15:30:25,385 DEBUG logging_mod.py Список курсов - {site.courses}
-2021-03-26 15:30:55,114 DEBUG logging_mod.py Список категорий
-2021-03-26 15:31:57,908 DEBUG logging_mod.py Список курсов - {site.courses}
-2021-03-26 15:32:53,106 DEBUG logging_mod.py Список курсов - []
+2021-04-06 18:55:31,248 DEBUG logging_mod.py Список курсов - []
+2021-04-06 18:55:41,968 DEBUG logging_mod.py Список курсов - []
+2021-04-06 18:55:53,047 DEBUG logging_mod.py Список категорий
+2021-04-06 18:56:06,814 DEBUG logging_mod.py Список категорий
+2021-04-06 18:56:08,389 DEBUG logging_mod.py Список курсов - []
+2021-04-06 18:56:20,397 DEBUG logging_mod.py Список курсов - [<models.RecordCourse object at 0x000001677A6E9BE0>]
+2021-04-06 19:01:06,224 DEBUG logging_mod.py Список курсов - [<models.RecordCourse object at 0x000001677A6E9BE0>]
+2021-04-06 19:01:28,450 DEBUG logging_mod.py Список курсов - []
+2021-04-06 19:01:38,732 DEBUG logging_mod.py Список курсов - []
+2021-04-06 19:01:47,772 DEBUG logging_mod.py Список курсов - [<models.RecordCourse object at 0x00000215CE3FF880>]
+2021-04-06 19:55:04,940 DEBUG logging_mod.py Список курсов - []
+2021-04-06 19:55:06,987 DEBUG logging_mod.py Список категорий
