@@ -5,14 +5,35 @@ from reusepatterns.singletones import SingletonByName
 from logs.configs.config_server_log import LOGGER
 
 
+class ConsoleWriter:
+
+    def write(self, text):
+        print(text)
+
+
+class FileWriter:
+
+    def __init__(self, file_name):
+        self.file_name = file_name
+
+    def write(self, text):
+        with open(self.file_name, 'a', encoding='utf-8') as f:
+            f.write(f'{text}\n')
+
+
 # Заметка, можно применить стратегию если добавить стратегию логирования
 class Logger(metaclass=SingletonByName):
 
-    def __init__(self, name):
+    def __init__(self, name, writer=ConsoleWriter()):
         self.name = name
+        self.writer = writer
 
-    def debug(self, text):
-        return LOGGER.debug(text)
+    def log(self, text):
+        text = f'log---> {text}'
+        self.writer.write(text)
+    #
+    # def debug(self, text):
+    #     return LOGGER.debug(text)
 
 
 # декоратор

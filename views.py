@@ -22,7 +22,7 @@ def main_view(request):
 
 
 def course_list_view(request):
-    LOGGER.debug(f'Список курсов - {site.courses}')
+    LOGGER.log(f'Список курсов - {site.courses}')
     return '200 OK', render('course_list.html', objects_list=site.courses)
 
 
@@ -91,5 +91,5 @@ def copy_course(request):
 
 
 def category_list_view(request):
-    LOGGER.debug('Список категорий')
+    LOGGER.log('Список категорий')
     return '200 OK', render('category_list.html', objects_list=site.categories)
