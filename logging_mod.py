@@ -13,7 +13,7 @@ class ConsoleWriter:
 
 class FileWriter:
 
-    def __init__(self, file_name):
+    def __init__(self, file_name="logs/log_files/server.log"):
         self.file_name = file_name
 
     def write(self, text):
@@ -24,7 +24,8 @@ class FileWriter:
 # Заметка, можно применить стратегию если добавить стратегию логирования
 class Logger(metaclass=SingletonByName):
 
-    def __init__(self, name, writer=ConsoleWriter()):
+    # def __init__(self, name, writer=ConsoleWriter()):
+    def __init__(self, name, writer=FileWriter()):
         self.name = name
         self.writer = writer
 

@@ -10,3 +10,10 @@
 2021-04-06 19:01:47,772 DEBUG logging_mod.py Список курсов - [<models.RecordCourse object at 0x00000215CE3FF880>]
 2021-04-06 19:55:04,940 DEBUG logging_mod.py Список курсов - []
 2021-04-06 19:55:06,987 DEBUG logging_mod.py Список категорий
+log---> Список курсов
+log---> Список курсов - [<models.RecordCourse object at 0x000001EE0A672580>]
+log---> Список курсов
+log---> Список курсов - [<models.RecordCourse object at 0x0000028673DBF5E0>, <models.RecordCourse object at 0x0000028673D82340>, <models.RecordCourse object at 0x0000028673DFD1C0>, <models.RecordCourse object at 0x0000028673DF38E0>]
+log---> Список курсов - [<models.RecordCourse object at 0x0000028673DBF5E0>, <models.RecordCourse object at 0x0000028673D82340>, <models.RecordCourse object at 0x0000028673DFD1C0>, <models.RecordCourse object at 0x0000028673DF38E0>, <models.RecordCourse object at 0x0000028673E0E700>, <models.RecordCourse object at 0x0000028673D82F40>]
+log---> Список курсов - []
+log---> Список курсов - []
