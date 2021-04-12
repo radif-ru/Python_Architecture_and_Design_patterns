@@ -6,7 +6,7 @@ import views
 from my_framework.cbv import ListView, CreateView
 from models import TrainingSite, BaseSerializer, EmailNotifier, SmsNotifier
 from my_orm import UnitOfWork
-from mappers import MapperRegistry
+from mappers_for_my_orm import MapperRegistry
 
 # Создание копирование курса, список курсов
 # Регистрация пользователя, список пользователей
